@@ -1,22 +1,30 @@
-import React, { useState } from 'react'
+import React, { Component } from 'react';
 
-const Toogle = () => {
+class Toogle extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      toogle: true
+    };
+  }
 
-    const [toogle, setToogle] = useState(true)
+  handleClick = () => {
+    this.setState({ toogle: !this.state.toogle });
+  }
 
-  return (
-    <div>
-
+  render() {
+    return (
+      <div>
         <h1>Application Toogle</h1>
-
-        <button onClick={()=> setToogle(!toogle) } >Toogle</button>
-        {   toogle && 
-            <div >
-                <p>Coucou</p>
-            </div>
-        }
-    </div>
-  )
+        <button onClick={this.handleClick}>Toogle</button>
+        {this.state.toogle && (
+          <div>
+            <p>Coucou</p>
+          </div>
+        )}
+      </div>
+    );
+  }
 }
 
-export default Toogle
+export default Toogle;

@@ -1,16 +1,15 @@
-import React from 'react'
+import React, { Component } from 'react';
 
-const CardEnfant = (props) => {
-
-  console.log(props)
-  // result : { name : elie }
-  
-  return (
-    <div>
-        {props.name}
-    </div>
-  )
-
+class CardEnfant extends Component {
+  render() {
+    console.log(this.props);
+    // result : { name : elie }
+    return (
+      <div>
+        {this.props.name}
+      </div>
+    );
+  }
 }
 
-export default CardEnfant
+export default CardEnfant;

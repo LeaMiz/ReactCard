@@ -1,28 +1,33 @@
-import React,  { useState } from 'react'
+import React, { Component } from 'react';
 
-const Toogle = () => {
-
-    const [toogle, setToogle] = useState(false);
-
-    const ActivToogle = () => {
-        setToogle(!toogle)
+class Toogle extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            toogle: false
+        };
+        this.ActivToogle = this.ActivToogle.bind(this);
     }
 
-  return (
-    <div>
-      HEllo touglle
+    ActivToogle() {
+        this.setState(prevState => ({
+            toogle: !prevState.toogle
+        }));
+    }
 
-    
-        { toogle === true &&
-             <div>Coucou</div>
-        }
+    render() {
+        return (
+            <div>
+                HEllo touglle
 
-        <button onClick={()=> ActivToogle()} >Click ici </button>
-      
+                {this.state.toogle === true &&
+                    <div>Coucou</div>
+                }
 
-
-    </div>
-  )
+                <button onClick={this.ActivToogle}>Click ici </button>
+            </div>
+        );
+    }
 }
 
-export default Toogle
+export default Toogle;

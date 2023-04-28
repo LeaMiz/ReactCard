@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import axios from 'axios'
 import Navbar from '../../components/NavBar/Navbar';
+import {Link} from "react-router-dom"
 
 const UseEffectCompo = () => {
     const [data, setData] = useState();
@@ -25,15 +26,17 @@ return (
       <Navbar/>
         <h1 className='titre'></h1>
         {data?.map((row)=> (
+          <Link className='text-decoration-none text-dark' to={`/article/${row.id}`}>
             <div key={row.id}  className='bg-secondary shadow-lg rounded m-3 p-3'>
-                <h2>{row.Title}</h2>
-                <img src={row.Image} alt="" />
+                <h2 className=''>{row.Titre}  </h2>
+                <img src={row.Image} className='img-fluid' alt="" />
                 <p>{row.Article} </p>
                 <p>{row.Auteur}</p>
                
                 
                 
             </div>
+            </Link>
         )
 
         )}

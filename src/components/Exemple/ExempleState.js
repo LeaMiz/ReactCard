@@ -1,19 +1,25 @@
-import React, {useState} from 'react'
+import React, { Component } from 'react';
 
-const ExempleState = () => {
+class ExempleState extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      name: "Noa"
+    };
+  }
 
-    const [state, setState] = useState("Noa")
+  handleClick = () => {
+    this.setState({ name: "ou pas ?" });
+  }
 
-    const handleClick = () => {
-        setState(" ou pas ? ")
-    }
-
-  return (
-    <div>
-        <p>Bonjour, je m'appel {state}</p>
-        <button  onClick={()=>handleClick() } >Hello</button>
-     </div>
-  )
+  render() {
+    return (
+      <div>
+        <p>Bonjour, je m'appelle {this.state.name}</p>
+        <button onClick={this.handleClick}>Hello</button>
+      </div>
+    );
+  }
 }
 
-export default ExempleState
+export default ExempleState;

@@ -1,32 +1,32 @@
-import React, {useState} from 'react'
+import React, { Component } from 'react';
 
-const List = () => {
+class List extends Component {
 
-    const [list, setList] = useState([{
-        id: 1, 
-        coursImportant :  "React js "
-    }, {
-        id: 2, 
-        coursImportant :  "html css"
-    }, {
-        id: 3, 
-        coursImportant :  "vanilla javascript"
-    }]);
+    constructor(props) {
+        super(props);
+        this.state = {
+            list: [
+                { id: 1, coursImportant: "React js" },
+                { id: 2, coursImportant: "html css" },
+                { id: 3, coursImportant: "vanilla javascript" }
+            ]
+        };
+    }
 
-
-
-  return (
-    <div>
-      <h1>List des cours les plus importants</h1>
-      {
-        list.map((cour, index)=> (
-            <div key={index}>
-                {cour.coursImportant}
+    render() {
+        return (
+            <div>
+                <h1>List des cours les plus importants</h1>
+                {
+                    this.state.list.map((cour, index) => (
+                        <div key={index}>
+                            {cour.coursImportant}
+                        </div>
+                    ))
+                }
             </div>
-        ))
-      }
-    </div>
-  )
+        );
+    }
 }
 
-export default List
+export default List;

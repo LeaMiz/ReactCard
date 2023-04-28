@@ -1,32 +1,45 @@
-import React, { useEffect, useState } from 'react'
+import React, { Component } from 'react';
 
-const Counter = () => {
+class Counter extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      counter: 0,
+    };
+  }
 
-    const [counter, setCounter] = useState(0);
+  componentDidMount() {
+    document.title = `le compteur est a ${this.state.counter}`;
+  }
 
-    useEffect(()=>{
-        document.title = `le compteur est a ${counter}`
-    },[counter]);
-
-    const Increment = () => {
-        setCounter(counter +1)
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.counter !== this.state.counter) {
+      document.title = `le compteur est a ${this.state.counter}`;
     }
-    const Decrement = () => {
-        setCounter(counter -1)
-    }
-    const Reset = () => {
-        setCounter(0)
-    }
+  }
 
+  increment = () => {
+    this.setState((prevState) => ({ counter: prevState.counter + 1 }));
+  };
 
+  decrement = () => {
+    this.setState((prevState) => ({ counter: prevState.counter - 1 }));
+  };
+
+  reset = () => {
+    this.setState({ counter: 0 });
+  };
+
+  render() {
     return (
-        <div>
-            <div> {counter}</div>
-            <button  onClick={()=> Increment()}  >Increment +</button>
-            <button onClick={()=> Decrement()}>Decrement -</button>
-            <button onClick={()=> Reset()}>Reset</button>
-        </div>
-    )
+      <div>
+        <div>{this.state.counter}</div>
+        <button onClick={this.increment}>Increment +</button>
+        <button onClick={this.decrement}>Decrement -</button>
+        <button onClick={this.reset}>Reset</button>
+      </div>
+    );
+  }
 }
 
-export default Counter
+export default Counter;

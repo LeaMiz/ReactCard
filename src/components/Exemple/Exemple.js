@@ -1,12 +1,14 @@
-import React from 'react'
-import Count from "./Count/Count"
+import React from 'react';
+import Count from './Count/Count';
 
-const Exemple = () => {
-  return (
-    <div>
-      <Count/>
-    </div>
-  )
+class Exemple extends React.Component {
+  render() {
+    return (
+      <div>
+        <Count />
+      </div>
+    );
+  }
 }
 
-export default Exemple
+export default Exemple;
